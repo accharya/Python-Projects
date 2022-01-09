@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Questions</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
+
+<body>
+    <main>
+
+        <div class="survey--header">
+            <h1>Survey Questions</h1>
+        </div>
+        <div class="survey--list">
+            {% if latest_question_list %}
+            <ol>
+                {% for question in latest_question_list %}
+                <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+                {% endfor %}
+            </ol>
+            {% else %}
+            <p>No polls are available.</p>
+            {% endif %}
+        </div>
+    </main>
+
+</body>
+
+</html>
